@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Help</title>
+    <link rel="stylesheet" href="./source/css/style.css">
+</head>
+<body>
+    <ul class="reo-list">
+        <li>
+            <h2>第一步，</br>开启SMTP服务。</h2>
+            <h4>为什么要开启SMTP ？</h4>
+            <p>开启发件人邮箱的SMTP服务，第三方客户端（如Reolink）才能凭借SMTP授权码，发送邮件到收件人邮箱。</p>
+            <ul class="email-helper-cates">
+                <li>
+                    <a href="./email-helper-for-qq-mail.html">
+                        <img src="./source/images/email_help_mark.png" alt="">
+                        <p>QQ邮箱开启SMTP</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./email-helper-for-163-mail.html">
+                        <img src="./source/images/email_help_mark.png" alt="">
+                        <p>163、126邮箱开启SMTP</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" id="show-email-note">
+                        <img src="./source/images/email_help_mark.png" alt="">
+                        <p>其他邮箱</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h2>第二步，</br>选择SMTP服务。</h2>
+            <p>稍后请在SMTP服务器页面，选择一个对应的SMTP服务器，或者手动输入其他SMTP服务器和端口。</p>
+        </li>
+        <li>
+            <h2>第三步，</br>填写发件人帐号密码。</h2>
+            <p>发件人的密码建议使用（开启SMTP服务器获得的）授权码，也可以使用邮箱密码。</p>
+        </li>
+    </ul>
+    <div class="dialog-wrap hide" id="email-note">
+        <div class="dialog-content-inner">
+            <div class="dialog-content">
+                <p class="title">提示</p>
+                <p>请到您的发件人邮箱的设置页面中，开启SMTP服务。操作流程可参考邮箱的官方帮助文档。</p>
+                <div class="dialog-content-buttons">
+                    <button class="reo-button" id="close-email-note">好的</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var body = document.getElementsByTagName('body')[0];
+        var emailNote = document.getElementById('email-note');
+        document.getElementById('show-email-note').addEventListener('click', function () {
+
+            body.className += ' reo-popup-showing';
+            emailNote.className = emailNote.className.replace('hide', '');
+        });
+        document.getElementById('close-email-note').addEventListener('click', function () {
+
+            body.className = body.className.replace('reo-popup-showing', '');
+            emailNote.className += ' hide';
+        });
+    </script>
+</body>
+</html>
